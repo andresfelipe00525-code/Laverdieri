@@ -1,0 +1,329 @@
+/* Caribe Privé Concierge - Custom Styles */
+
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(11, 11, 11, 0.85) 0%,
+    rgba(11, 11, 11, 0.6) 40%,
+    rgba(11, 11, 11, 0.3) 70%,
+    rgba(11, 11, 11, 0.2) 100%
+  );
+}
+
+/* Pillar Sections */
+.pillar-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.pillar-image {
+  position: absolute;
+  width: 55%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pillar-image-left {
+  left: 0;
+}
+
+.pillar-image-right {
+  right: 0;
+}
+
+.pillar-content {
+  position: relative;
+  z-index: 10;
+  width: 45%;
+  padding: 4rem;
+}
+
+.pillar-content-left {
+  margin-left: auto;
+}
+
+.pillar-content-right {
+  margin-right: auto;
+}
+
+/* Experience Grid */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 300px);
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 250px);
+  }
+}
+
+@media (max-width: 640px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 200px);
+  }
+}
+
+.experience-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.experience-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experience-card:hover img {
+  transform: scale(1.1);
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 11, 11, 0.8) 0%, transparent 60%);
+  z-index: 1;
+  transition: background 0.5s ease;
+}
+
+.experience-card:hover::before {
+  background: linear-gradient(to top, rgba(11, 11, 11, 0.9) 0%, rgba(11, 11, 11, 0.3) 100%);
+}
+
+.experience-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  z-index: 2;
+  transition: border-color 0.5s ease;
+  pointer-events: none;
+}
+
+.experience-card:hover::after {
+  border-color: var(--accent-primary);
+}
+
+.experience-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 3;
+}
+
+/* Contact Section */
+.contact-section {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-primary);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(15, 61, 62, 0.5);
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(198, 169, 107, 0.4);
+}
+
+.whatsapp-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--accent-primary);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1024px) {
+  .pillar-section {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .pillar-image {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+  }
+
+  .pillar-content {
+    width: 100%;
+    padding: 3rem 1.5rem;
+  }
+
+  .pillar-content-left,
+  .pillar-content-right {
+    margin: 0;
+  }
+}
+
+/* Navigation link hover effect */
+.nav-link {
+  position: relative;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Language toggle */
+.lang-toggle {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.lang-toggle button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0.25rem 0.5rem;
+}
+
+.lang-toggle button.active {
+  color: var(--accent-primary);
+}
+
+.lang-toggle button:hover {
+  color: var(--accent-primary);
+}
+
+/* Section reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+.footer {
+  background: var(--bg-primary);
+  border-top: 1px solid rgba(245, 245, 245, 0.1);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 11, 11, 0.98);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  color: var(--accent-primary);
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+}
