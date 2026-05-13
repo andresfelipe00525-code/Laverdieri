@@ -4,8 +4,13 @@ import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
 	const { t } = useLanguage();
-	const go = (id) =>
-		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+	const go = (id) => {
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	};
 
 	return (
 		<section id="hero" className="hero-section">
@@ -19,22 +24,16 @@ const Hero = () => {
 
 			<div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-28 md:pt-36">
 				<div className="max-w-2xl">
-					{/* thin gold line */}
+					{/* Thin gold line - Corregido: Un solo objeto style */}
 					<div
-						style={{
-							width: '36px',
-							height: '1px',
-							background: 'var(--gold)',
-							marginBottom: '1.75rem',
-						}}
 						className="animate-fadeInUp"
 						style={{
-							animationDelay: '.1s',
-							animationFillMode: 'forwards',
 							width: '36px',
 							height: '1px',
 							background: 'var(--gold)',
 							marginBottom: '1.75rem',
+							animationDelay: '.1s',
+							animationFillMode: 'forwards',
 						}}
 					/>
 
@@ -52,7 +51,7 @@ const Hero = () => {
 					<h1
 						className="animate-fadeInUp font-serif font-light tracking-tight leading-[1.05] mb-8"
 						style={{
-							fontSize: 'clamp(2.8rem,6vw,5.5rem)',
+							fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
 							color: 'var(--cream)',
 							animationDelay: '.35s',
 							animationFillMode: 'forwards',
@@ -68,7 +67,7 @@ const Hero = () => {
 					<p
 						className="animate-fadeInUp font-sans font-light tracking-wide mb-10"
 						style={{
-							fontSize: 'clamp(.85rem,1.4vw,1.05rem)',
+							fontSize: 'clamp(.85rem, 1.4vw, 1.05rem)',
 							color: 'var(--cream-dim)',
 							maxWidth: '32rem',
 							lineHeight: 1.8,
@@ -82,7 +81,10 @@ const Hero = () => {
 					<button
 						onClick={() => go('contact')}
 						className="animate-fadeInUp btn-primary"
-						style={{ animationDelay: '.65s', animationFillMode: 'forwards' }}
+						style={{
+							animationDelay: '.65s',
+							animationFillMode: 'forwards',
+						}}
 					>
 						{t('hero.cta')}
 					</button>
@@ -93,6 +95,7 @@ const Hero = () => {
 				onClick={() => go('stays')}
 				className="absolute bottom-8 left-1/2 -translate-x-1/2 transition-colors animate-bounce cursor-pointer"
 				style={{ color: 'rgba(240,236,228,.35)' }}
+				aria-label="Scroll down"
 			>
 				<ChevronDown size={26} strokeWidth={1} />
 			</button>
